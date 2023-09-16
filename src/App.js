@@ -17,9 +17,14 @@ function App() {
         >
           Learn React
         </a>
+        <Person></Person>
       </header>
     </div>
   );
+}
+
+function Person() {
+  return <h1>Hello...</h1>
 }
 
 export default App;
