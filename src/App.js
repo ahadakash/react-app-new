@@ -1,30 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <MyCart></MyCart>
         <Person></Person>
       </header>
     </div>
   );
 }
 
+function MyCart() {
+  const div = {
+    height: '200px',
+    width: '500px',
+    border: '10px solid blue'
+  }
+  const props = [
+    { name: 'Rahim', price: 500, email: "aaa@gmail.com" },
+    { name: 'Karim', price: 1500, email: "bbb@gmail.com" },
+    { name: 'Larim', price: 1000, email: "ccc@gmail.com" },
+  ]
+  return (
+    <div style={div}>
+      <h1>This is { } cart.</h1>
+      <button style={{ backgroundColor: 'yellow', padding: '10px', border: '5px solid black' }}>Buy Me</button>
+    </div>
+  )
+}
+
 function Person() {
-  return <h1>Hello...</h1>
+  return <h1 style={{ color: 'red' }}>Hello...</h1>
 }
 
 export default App;
