@@ -10,9 +10,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MyCart name={props[0].name} email={props[0].email} price={props[0].price}></MyCart>
-        <MyCart name={props[1].name} email={props[1].email} price={props[1].price}></MyCart>
-        <MyCart name={props[2].name} email={props[2].email} price={props[2].price}></MyCart>
+        <MyCart products={props[0]}></MyCart>
+        <MyCart products={props[1]}></MyCart>
+        <MyCart products={props[2]}></MyCart>
         <Person></Person>
       </header>
     </div>
@@ -26,12 +26,13 @@ function MyCart(props) {
     border: '10px solid blue',
     marginTop: '20px'
   }
+  const { name, email, price } = props.products;
 
   return (
     <div style={div}>
-      <h1>This is {props.name}'s cart.</h1>
-      <h2>Email: {props.email}</h2>
-      <button style={{ backgroundColor: 'yellow', padding: '10px', border: '5px solid black' }}>Price: {props.price} (Buy Me)</button>
+      <h1>This is {name}'s cart.</h1>
+      <h2>Email: {email}</h2>
+      <button style={{ backgroundColor: 'yellow', padding: '10px', border: '5px solid black' }}>Price: {price} (Buy Me)</button>
     </div>
   )
 }
