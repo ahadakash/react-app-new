@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 
 function App() {
@@ -10,12 +11,24 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <IncreaseDecrease></IncreaseDecrease>
         <MyCart products={props[0]}></MyCart>
         <MyCart products={props[1]}></MyCart>
         <MyCart products={props[2]}></MyCart>
         <Person></Person>
       </header>
     </div>
+  );
+}
+
+function IncreaseDecrease() {
+  const [num, setNum] = useState(0);
+  return (
+    <div>
+      <h1>Total Users: {num}</h1>
+      <button style={{ marginRight: '20px', border: '5px dotted black', backgroundColor: 'yellow' }} onClick={() => setNum(num + 1)}>Increase</button>
+      <button style={{ marginRight: '20px', border: '5px dotted black', backgroundColor: 'yellow' }} onClick={() => setNum(num - 1)}>Decrease</button>
+    </div >
   );
 }
 
