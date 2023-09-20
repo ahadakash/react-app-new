@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -6,18 +6,41 @@ function App() {
     { name: 'Rahim', price: 500, email: "aaa@gmail.com" },
     { name: 'Karim', price: 1500, email: "bbb@gmail.com" },
     { name: 'Larim', price: 1000, email: "ccc@gmail.com" },
-  ]
+  ];
 
   return (
     <div className="App">
       <header className="App-header">
         <IncreaseDecrease></IncreaseDecrease>
+        <Users></Users>
         <MyCart products={props[0]}></MyCart>
         <MyCart products={props[1]}></MyCart>
         <MyCart products={props[2]}></MyCart>
         <Person></Person>
       </header>
     </div>
+  );
+}
+
+function Users() {
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users/")
+      .then(res => res.json())
+      .then(data => setUser(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Users Data:</h1>
+      <ul>
+        {
+          user.map((data) => <li>{data.name}</li>)
+        }
+      </ul>
+    </div>
+
   );
 }
 
