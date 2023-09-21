@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <AddMovie></AddMovie>
         <IncreaseDecrease></IncreaseDecrease>
         <Users></Users>
         <MyCart products={props[0]}></MyCart>
@@ -22,6 +23,18 @@ function App() {
   );
 }
 
+function AddMovie() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Number of Movies: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Add Movie</button>
+    </div>
+  )
+}
+
+
 function Users() {
   const [user, setUser] = useState([]);
 
@@ -31,17 +44,26 @@ function Users() {
       .then(data => setUser(data));
   }, []);
 
+  console.log(user);
+
   return (
     <div>
       <h1>Users Data:</h1>
       <ul>
         {
-          user.map((data) => <li>{data.name}</li>)
+          user.map((data) => <UsersData name={data.name}></UsersData>)
         }
       </ul>
     </div>
 
   );
+}
+
+function UsersData(props) {
+
+  return (
+    <h3>This user's name is : {props.name}</h3>
+  )
 }
 
 function IncreaseDecrease() {
